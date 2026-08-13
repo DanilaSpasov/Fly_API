@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[codz]
+*.so
+
+# Virtual environments and local settings
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# Tests, coverage and linters
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Packaging
+build/
+dist/
+*.egg-info/
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+local_settings.py
+staticfiles/
+
+# IDEs
+.idea/
+.vscode/
+
+# Operating systems
+.DS_Store
+Thumbs.db
