@@ -11,6 +11,7 @@ from src.utils import (
 
 
 def get_top_n_from_user() -> int:
+    """Получает от пользователя количество самолётов для топа."""
     while True:
         top_n_input = input("Введите количество самолетов для топа: ").strip()
 
@@ -28,6 +29,7 @@ def get_top_n_from_user() -> int:
 
 
 def print_aeroplanes(title: str, aeroplanes: list[Aeroplane]) -> None:
+    """Выводит заголовок и список самолётов."""
     print(f"\n{title}")
 
     if not aeroplanes:
@@ -39,6 +41,7 @@ def print_aeroplanes(title: str, aeroplanes: list[Aeroplane]) -> None:
 
 
 def user_interaction() -> None:
+    """Запускает взаимодействие с пользователем."""
     country = input("Введите страну для поиска самолетов: ").strip()
 
     if not country:

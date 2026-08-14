@@ -1,4 +1,6 @@
 class Aeroplane:
+    """Представляет самолёт и его полётные данные."""
+
     icao24: str
     callsign: str
     origin_country: str
@@ -15,6 +17,7 @@ class Aeroplane:
         on_ground: bool,
         velocity: float,
     ) -> None:
+        """Создаёт объект самолёта с указанными данными."""
         if isinstance(altitude, bool) or not isinstance(altitude, (int, float)):
             raise TypeError("Высота должна быть числом")
 
@@ -33,24 +36,29 @@ class Aeroplane:
 
     @property
     def altitude(self) -> float:
+        """Возвращает высоту полёта самолёта."""
         return self.__altitude
 
     @property
     def velocity(self) -> float:
+        """Возвращает скорость самолёта."""
         return self.__velocity
 
     def is_faster_than(self, other: "Aeroplane") -> bool:
+        """Сравнивает скорость самолёта со скоростью другого самолёта."""
         if not isinstance(other, Aeroplane):
             raise TypeError("Можно сравнивать только самолёты")
         return self.velocity > other.velocity
 
     def is_higher_than(self, other: "Aeroplane") -> bool:
+        """Сравнивает высоту самолёта с высотой другого самолёта."""
         if not isinstance(other, Aeroplane):
             raise TypeError("Можно сравнивать только самолёты")
         return self.altitude > other.altitude
 
     @classmethod
     def from_state(cls, data: list) -> "Aeroplane":
+        """Создаёт самолёт из данных о состоянии полёта."""
         aeroplane = cls(
             icao24=data[0],
             callsign=data[1].strip() if data[1] else "Неизвестно",
@@ -63,6 +71,7 @@ class Aeroplane:
 
     @classmethod
     def cast_to_object_list(cls, data: list) -> list["Aeroplane"]:
+        """Преобразует список состояний в список самолётов."""
         result = []
 
         for item in data:
@@ -74,6 +83,7 @@ class Aeroplane:
         return result
 
     def __str__(self) -> str:
+        """Возвращает строковое представление самолёта."""
         return (
             f"Позывной: {self.callsign}, "
             f"страна регистрации: {self.origin_country}, "
