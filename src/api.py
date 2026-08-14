@@ -4,6 +4,8 @@ import requests
 
 
 class AbstractAPI(ABC):
+    """Определяет интерфейс для получения данных о самолётах."""
+
     @abstractmethod
     def get_country_bounds(self, country: str) -> tuple[float, float, float, float]:
         """Получает границы указанной страны."""
@@ -16,10 +18,13 @@ class AbstractAPI(ABC):
 
 
 class AeroplanesAPI(AbstractAPI):
+    """Получает данные о самолётах из внешних API."""
+
     NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
     OPENSKY_URL = "https://opensky-network.org/api/states/all"
 
     def get_country_bounds(self, country: str) -> tuple[float, float, float, float]:
+        """Получает границы указанной страны."""
         params = {
             "country": country,
             "format": "jsonv2",
@@ -50,6 +55,7 @@ class AeroplanesAPI(AbstractAPI):
         )
 
     def get_aeroplanes(self, country: str) -> list[list]:
+        """Получает информацию о самолётах над указанной страной."""
         lamin, lomin, lamax, lomax = self.get_country_bounds(country)
         params = {
             "lamin": lamin,
