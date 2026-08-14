@@ -24,6 +24,9 @@ build/
 dist/
 *.egg-info/
 
+# Project data
+aeroplanes.json
+
 # Django
 *.log
 db.sqlite3
